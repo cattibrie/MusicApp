@@ -7,18 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-
-
         <div class="container2">
-          <p>Spotify doesn't know artist named {{ artist }} <br>
-             Please, search again</p><br>
-          <div id="contact-form">
+          {% if res.status_code != 201 %}
+            <p>Sorry. An error occurred. Playlist wasn't created</p><br>
+          {% endif %}
+          <p>Playlist successfully created</p><br>
+          <!--<div id="contact-form">
             <form method="post" action="/search_artist">
               <input type="text" id="artist" name="artist" required="required" placeholder="Enter Artist"><br>
               <input class="btn btn-secondary btn-lg" type="submit" value="Find" id="submit-button">
             </form>
 
-          </div>
+          </div> -->
         </div>
 
   </body>
