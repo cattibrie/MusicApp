@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Ask to create playlist</title>
+    <title>Request to show tracks</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href='../static/css/main.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,9 +12,9 @@
          Playlist with Ten Top Tacks</p><br>
          <div id="contact-form">
            <form method="post" action="/show_top_tracks">
-             <select name='artist'>
+             <select name="artist">
                {% for key, value in artist_dict.iteritems() %}
-                 <option value={{ value }}>{{ key }}</option>
+                 <option value="{{ value }}">{{ key }}</option>
                {% endfor %}
              </select>
              <input class="btn btn-secondary btn-lg" type="submit" value="Submit" id="submit-button">

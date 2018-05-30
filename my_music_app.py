@@ -120,14 +120,23 @@ def search_artist(token, artist):
     return searh_request(token, payload)
 
 
-def get_artist_top_tracks(artistID):
+def get_artist_top_tracks(token, artistID):
     '''
     Function that gets Artist's Top Tracks
-    Input: artist ID
+    Input: artist ID, token
     Returns: dict where key is a name of the track and value - uri of the track
     '''
-    # Please, write the code
-    pass
+    # Endpoint to search
+    endpoint = 'https://api.spotify.com/v1/artists/' + artistID + '/top-tracks'
+    # Use the access token to access Spotify API
+    authorization_header = {"Authorization": "Bearer {}".format(token)}
+    payload = {"country": "GB"}
+    url_arg = params_query_string(payload)
+    auth_url = endpoint + "/?" + url_arg
+    # Get request to Spotify API to get Top tracks
+    top_tracks = requests.get(auth_url, headers=authorization_header)
+    print(top_tracks)
+    return top_tracks.json()
 
 
 def get_current_user_profile(user_data_token):
@@ -263,11 +272,35 @@ def show_top_tracks():
     Returns: template
     Template shows Artist's Top Tracks and asks user to create playlist
     '''
+    # Check if user is logged in
+    if "access_data" not in session:
+        return redirect(url_for('index'))
+    # User is logged in
+    # Get access token from user's request
+    token = session['access_data']['access_token']
     # Get artist ID from the request form
+    # artistID = str(request.args.get("artist"))
     form_data = request.form
     artistID = form_data["artist"]
-    tracks = get_artist_top_tracks(artistID)
-    return render_template("req_to_create_playlist.html", artist_dict=tracks)
+    # Endpint to get artist related form_data
+    endpoint = "https://api.spotify.com/v1/artists/" + artistID
+    authorization_header = {"Authorization": "Bearer {}".format(token)}
+    artist_data = requests.get(endpoint, headers=authorization_header)
+    artist_data = artist_data.json()
+    artist_name = str(artist_data["name"])
+    #artist_pic = artist_data["images"][0]["url"]
+    artist_pic = artist_data["images"]
+    # print artistID
+    top_tracks = get_artist_top_tracks(token, artistID)
+    tracks_dict = {}
+    for track in top_tracks["tracks"]:
+        tracks_dict[track["name"]] = {"uri": track["uri"],
+                                      "preview_url": track["preview_url"]}
+    print tracks_dict
+    return render_template("req_to_create_playlist.html",
+                           tracks_dict=tracks_dict,
+                           name=artist_name.title(),
+                           picture=artist_pic)
 
 
 @app.route("/create_playlist", methods=["POST"])
@@ -314,9 +347,9 @@ def create_playlist():
 def call_api_token(code):
     endpoint = "https://accounts.spotify.com/api/token"
     make_request = requests.post(endpoint,
-        data={"grant_type": "client_credentials",
-              "client_id": CLIENT_ID,
-              "client_secret": CLIENT_SECRET})
+                                 data={"grant_type": "client_credentials",
+                                       "client_id": CLIENT_ID,
+                                       "client_secret": CLIENT_SECRET})
     return make_request
 
 
