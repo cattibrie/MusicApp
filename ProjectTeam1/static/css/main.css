@@ -46,18 +46,21 @@ h1 {
 
 .paddedrow {
  padding: 30px;
+ box-sizing: border-box;
 }
 
 .type-text {
   display: block;
   margin: 0 auto;
   width: 35%;
+  box-sizing: border-box;
 }
 
 .submit-button {
 
   display: block;
   margin: 20px auto 0 auto;
+  box-sizing: border-box;
 }
 
 .container2 {
@@ -66,11 +69,12 @@ h1 {
   	font-size: 23px;
   	font-weight: bold;
   	width: 100%;
-	height: 250px;
-	background-size: cover;
-	background-repeat: no-repeat;
-	padding: 30px;
-  text-align: center;
+	  height: 250px;
+	  background-size: cover;
+	  background-repeat: no-repeat;
+	  padding: 30px;
+    text-align: center;
+    box-sizing: border-box;
 }
 
 
@@ -87,6 +91,7 @@ h1 {
 	background-repeat: no-repeat;
 	padding: 30px;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .container4 {
@@ -100,6 +105,7 @@ h1 {
 	background-size: cover;
 	background-repeat: no-repeat;
 	padding: 15px;
+  box-sizing: border-box;
 }
 
 
@@ -114,6 +120,7 @@ h1 {
 	background-size: cover;
 	background-repeat: no-repeat;
 	padding: 5px;
+  box-sizing: border-box;
 }
 
 .container6 {
@@ -124,6 +131,7 @@ h1 {
 	background-size: cover;
 	background-repeat: no-repeat;
 	padding: 5px;
+  box-sizing: border-box;
 }
 #submit-button{
   /* padding: 60px; */

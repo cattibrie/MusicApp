@@ -1,0 +1,4 @@
+graft ProjectTeam1/templates
+graft ProjectTeam1/static
+include Pip*
+include Procfile
