@@ -1,12 +1,6 @@
-<!doctype html>
-<html>
-  <head>
-    <title>Request to show tracks</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href='../static/css/main.css' rel='stylesheet'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-  <body>
+{% extends "layout.html" %}
+{% block body %}
+
     <div class="container2">
       <p>Select the Artist for whom you want see Top Tacks</p><br>
          <div id="contact-form">
@@ -20,5 +14,4 @@
            </form>
          </div>
     </div>
-  </body>
-</html>
+{% endblock %}

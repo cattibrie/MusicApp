@@ -1,30 +1,15 @@
-<!doctype html>
-<html>
-  <head>
-    <title>Ask to create playlist</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href='../static/css/main.css' rel='stylesheet'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-  <body>
+{% extends "layout.html" %}
+{% block body %}
 
     <div class="row paddedrow">
       <div class="col-md-6">
         <div class="container5">
-<<<<<<< HEAD
-          <p>{{ name }}'s Ten Top Tacks</p><br>
-=======
           <p>{{ name }}'s Top Tacks</p><br>
->>>>>>> uppstream/master
           {% if picture %}
            <img src={{ picture[0]["url"] }}>
           {% endif %}
             <div id="contact-form">
-<<<<<<< HEAD
-              <form method="post" action="/create_playlist">
-=======
               <form method="get" action="/login">
->>>>>>> uppstream/master
                 <input class="btn btn-secondary btn-lg" type="submit" value="Create playlist" id="submit-button">
               </form>
             </div>
@@ -47,5 +32,5 @@
         </div>
       </div>
     </div>
-  </body>
-</html>
+
+{% endblock %}
