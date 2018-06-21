@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div class="row paddedrow">
+      <div class="col-md-6">
+        <div class="container2">
+          <p>Search artist to listen to?</p>
+            <div id="contact-form">
+                <form method="post" action="/search_artist">
+                  <input class="type-text" type="text" id="artist" name="artist" required="required" placeholder="Enter Artist">
+                  <input class="btn btn-secondary btn-lg submit-button" type="submit" value="Find" id="submit-button">
+                </form>
+            </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="container3">
+          <p>Search city for upcoming gigs!</p>
+            <div id="contact-form">
+              <form method="post" action="/events_list">
+                <input type="city" class="type-text" id="city" name="city" required="required" placeholder="Enter City">
+                <input type="submit" class="btn btn-secondary btn-lg submit-button" value="Submit" id="submit-button">
+              </form>
+            </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

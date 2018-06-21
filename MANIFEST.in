@@ -1,4 +1,4 @@
-graft ProjectTeam1/templates
-graft ProjectTeam1/static
-include Pip*
-include Procfile
+graft music_app/templates
+graft music_app/static
+include music_app/Pip*
+include music_app/Procfile

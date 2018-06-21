@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <div class="container2">
+      <p>Select the Artist for whom you want see Top Tacks</p><br>
+         <div id="contact-form">
+           <form method="post" action="/show_top_tracks">
+             <select name="artist">
+               {% for key, value in artist_dict.iteritems() %}
+                 <option value="{{ value }}">{{ key }}</option>
+               {% endfor %}
+             </select>
+             <input class="btn btn-secondary btn-lg" type="submit" value="Submit" id="submit-button">
+           </form>
+         </div>
+    </div>
+{% endblock %}
