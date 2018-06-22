@@ -7,4 +7,7 @@ setup(
     install_requires=[
         'flask',
     ],
+    entry_points={
+        'console_scripts': ['music_app=music_app.my_music_app:main'],
+    },
 )

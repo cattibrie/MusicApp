@@ -556,4 +556,5 @@ def get_sample_track(artist_id):
 app.secret_key = os.urandom(30)
 
 
-# app.run(port=PORT, host="0.0.0.0", debug=True)
+def main():
+    app.run(port=PORT, host="0.0.0.0", debug=True)
